@@ -2,17 +2,14 @@
  * @Author: Youzege
  * @Date: 2022-10-20 15:31:56
  * @LastEditors: Youzege
- * @LastEditTime: 2022-10-20 21:18:08
+ * @LastEditTime: 2022-10-26 20:16:10
  */
 import './App.css'
-import FormData from './Demo/FormData/FormData'
 
 function App() {
-
   return (
-    <div className="App">
+    <div className="App" style={{ height: '10000px'}}>
       <p>Hello FullStack</p>
-      <FormData />
     </div>
   )
 }
