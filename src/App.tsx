@@ -2,23 +2,33 @@
  * @Author: Youzege
  * @Date: 2022-10-20 15:31:56
  * @LastEditors: Youzege
- * @LastEditTime: 2022-10-26 22:26:24
+ * @LastEditTime: 2022-10-27 21:02:18
  */
-import {  useState } from 'react'
 import './App.css'
-import { NameContext } from './Demo/ContextComponent/Context'
-import { ComponentA } from './Demo/ContextComponent/ContextComponent'
+import { BrowserRouter, Link, Routes, Route } from 'react-router-dom'
+import { About, Home } from './Demo/RouterPages'
+/**
+ * BrowserRouter - 声明一个非Hash模式路由
+ * Link - 指定跳转 to 地址
+ * Routes - 路由出口
+ * Route - 路径和组件的关系 path 路径 element 组件 成对出现
+ * 
+ */
 
 function App () {
-  const [componentName, setComponentName] = useState('Youzege')
-
   return (
-    <NameContext.Provider value={componentName}>
-      <div className='App'>
-        <p>Hello FullStack</p>
-        <ComponentA></ComponentA>
-      </div>
-    </NameContext.Provider>
+    <div className='App'>
+      <p>Hello FullStack</p>
+      <p>路由 👇</p>
+      <BrowserRouter>
+        <Link to='/'>首页 🏠</Link>
+        <Link to='/about'>关于 😯</Link>
+        <Routes>
+          <Route path='/' element={ < Home /> }></Route>
+          <Route path='/about' element={ < About /> }></Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
   )
 }
 
