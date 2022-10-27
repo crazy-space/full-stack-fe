@@ -2,31 +2,26 @@
  * @Author: Youzege
  * @Date: 2022-10-20 15:31:56
  * @LastEditors: Youzege
- * @LastEditTime: 2022-10-27 21:13:06
+ * @LastEditTime: 2022-10-27 22:50:46
  */
 import './App.css'
-import { BrowserRouter, Link, Routes, Route } from 'react-router-dom'
-import { About, Home, Login } from './Demo/RouterPages'
-/**
- * BrowserRouter - 声明一个非Hash模式路由
- * Link - 指定跳转 to 地址
- * Routes - 路由出口
- * Route - 路径和组件的关系 path 路径 element 组件 成对出现
- * 
- */
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Login } from './Demo/RouterPages'
+import { Header, Layout, Main, NotFound } from './Demo/LayoutRouter'
 
 function App () {
   return (
     <div className='App'>
       <p>Hello FullStack</p>
-      <p>路由 👇</p>
+      <p>嵌套路由 👇</p>
       <BrowserRouter>
-        <Link to='/'>首页 🏠</Link>
-        <Link to='/about'>关于 😯</Link>
         <Routes>
-          <Route path='/' element={ < Home /> }></Route>
-          <Route path='/about/:id' element={ < About /> }></Route>
-          <Route path='/login' element={ <Login /> }></Route>
+          <Route path='/' element={<Layout />}>
+            <Route index element={<Header />}></Route>
+            <Route path='/main' element={<Main />}></Route>
+          </Route>
+          <Route path='/login' element={<Login />}></Route>
+          <Route path='*' element={<NotFound />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
